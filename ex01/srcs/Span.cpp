@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aghergho <aghergho@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-07-04 07:28:16 by aghergho          #+#    #+#             */
+/*   Updated: 2025-07-04 07:28:16 by aghergho         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/Span.hpp"
 
 Span::Span(int size) : _size(size)
@@ -31,16 +43,13 @@ void Span::addNumber(int number)
     this->_numbers.push_back(number);
 }
 
-/*
-    [ 21 - 1,3,5,3,6,8,9];2 
-*/
 
 int Span::shortestSpan()
 {
     if (this->_numbers.size() < 2)
         throw std::runtime_error("Not enough numbers to find a the Shortest span");
     int short_span;
-
+    std::sort(this->_numbers.begin(), this->_numbers.end());
     short_span = std::abs(this->_numbers[1] - this->_numbers[0]);
     for (size_t i = 1; i < this->_numbers.size() - 1; ++i)
     {
